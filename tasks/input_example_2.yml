@@ -1,0 +1,25 @@
+# fly -t tutorial e -c input_example_2.yml
+# this is going to pass in the entire local dir and put it in a folder
+# called tasks
+
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: amazonlinux
+    tag: "2"
+
+inputs:
+  - name: tasks # this is because the current pwd is called tasks
+                # so it makes the assumption you want the current pwd
+
+run:
+  path: bash
+  args:
+    - -exc
+    - |
+      ls -al
+      ls -al tasks/
+

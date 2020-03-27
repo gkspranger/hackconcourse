@@ -1,0 +1,24 @@
+# fly -t tutorial e -c input_example_1.yml -i local-dir=.
+# this is going to pass in the entire local dir and put it in a folder
+# called local-dir
+
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: amazonlinux
+    tag: "2"
+
+inputs:
+  - name: local-dir
+
+run:
+  path: bash
+  args:
+    - -exc
+    - |
+      ls -al
+      ls -al local-dir/
+

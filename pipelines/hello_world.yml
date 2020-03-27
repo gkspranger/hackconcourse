@@ -1,0 +1,21 @@
+# fly -t tutorial set-pipeline -c hello_world.yml -p hello-world
+
+---
+jobs:
+  - name: job-hello-world
+    public: true  # means it is safe for public consumption ??
+    plan:
+      - task: hello-world
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: amazonlinux
+              tag: "2"
+          run:
+            path: bash
+            args:
+              - -exc
+              - |
+                echo "hello world"

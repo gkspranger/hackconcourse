@@ -1,0 +1,21 @@
+# fly -t tutorial set-pipeline -c hello_world.yml -p hello-world
+# same as
+# fly -t tutorial sp -c git_resource_1.yml -p git-resource-1
+# then can unpause it
+# fly -t tutorial up -p git-resource-1
+
+---
+resources:
+  - name: tutorial
+    type: git
+    source:
+      uri: https://github.com/gkspranger/hackconcourse.git
+      branch: master
+
+jobs:
+  - name: job-git-resource
+    public: true
+    plan:
+      - get: tutorial
+      - task: run-script
+        file: tutorial/tasks/run_script_1.yml
