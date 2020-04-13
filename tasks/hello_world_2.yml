@@ -9,12 +9,8 @@ image_resource:
     repository: amazonlinux
     tag: "2"
 
-run:
-  # path: custom-tasks/tasks/hello_world_2.sh
-  path: bash
-  args:
-    - -exc
-    - |
-      ls -al
-      ls -al local-dir/
+inputs:
+- name: custom-tasks
 
+run:
+  path: custom-tasks/tasks/hello_world_2.sh
