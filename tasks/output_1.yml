@@ -1,0 +1,19 @@
+# fly -t tutorial execute -c tasks/hello_world.yml
+
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: amazonlinux
+    tag: "2"
+
+inputs:
+- name: custom-tasks
+
+outputs:
+- name: some-files
+
+run:
+  path: custom-tasks/tasks/output_1.sh

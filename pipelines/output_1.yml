@@ -1,0 +1,19 @@
+---
+resources:
+  - name: tutorial
+    type: git
+    source:
+      uri: https://github.com/gkspranger/hackconcourse.git
+      branch: master
+
+jobs:
+  - name: create-output
+    public: true
+    plan:
+      - get: tutorial
+        trigger: true
+
+      - task: create-output
+        file: tutorial/tasks/output_1.yml
+        input_mapping:
+          custom-tasks: tutorial
