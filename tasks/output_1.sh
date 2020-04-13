@@ -5,8 +5,8 @@ pwd
 
 ls -al
 
-echo "hello" some-files/hello.txt
-echo "world" some-files/world.txt
+echo "hello" > some-files/hello.txt
+echo "world" > some-files/world.txt
 
 ls -al some-files/
 
