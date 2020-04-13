@@ -17,5 +17,11 @@ jobs:
     public: true
     plan:
       - get: tutorial
+
       - task: run-script
         file: tutorial/tasks/hello_world.yml
+
+      - task: run-script-2
+        file: tutorial/tasks/hello_world_2.yml
+        input_mapping:
+          custom-tasks: tutorial

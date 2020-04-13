@@ -3,3 +3,11 @@
 
 ### setting pipelines
 - assumes you are in the `pipelines` dir
+
+```bash
+# login and define target
+fly login -t tutorial -c https://localhost:8080 -n main
+
+# set a new pipeline
+fly -t tutorial set-pipeline -p hello_word -c pipelines/hello_world.yml
+```
