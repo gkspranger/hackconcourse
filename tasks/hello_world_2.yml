@@ -10,4 +10,11 @@ image_resource:
     tag: "2"
 
 run:
-  path: custom-tasks/tasks/hello_world_2.sh
+  # path: custom-tasks/tasks/hello_world_2.sh
+  path: bash
+  args:
+    - -exc
+    - |
+      ls -al
+      ls -al local-dir/
+
