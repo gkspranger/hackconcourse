@@ -1,0 +1,25 @@
+---
+job_platform: &job_platform
+  platform: linux
+  image_resource:
+    type: docker-image
+    source:
+      repository: amazonlinux
+      tag: "2"
+
+job_run: &job_run
+  run:
+    path: bash
+    args:
+      - -exc
+      - |
+        echo "hello world"
+
+jobs:
+  - name: yml-anchors
+    public: true  # means it is safe for public consumption ??
+    plan:
+      - task: hello-world
+        config:
+          <<: *job_platform
+          <<: *job_run
